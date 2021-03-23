@@ -93,7 +93,8 @@ CREATE OR REPLACE USER jd@localhost IDENTIFIED BY 'root';
 
 SHOW GRANTS;
 SHOW GRANTS FOR CURRENT_USER;
-SHOW GRANTS FOR 'jd'@'localhost';
+-- % (wildcard) here meaning logging in from any location will work!
+SHOW GRANTS FOR 'jd'@'%';
 
 -- join tables
 select * from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` ;
