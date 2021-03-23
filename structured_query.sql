@@ -118,3 +118,6 @@ select lastName, count(lastName) as Customers from employees as e join customers
 
 -- using order by
 select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName order by Customers;
+
+-- class ex
+select e.lastName, count(e.lastName) as Freq from employees as e inner join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` where c.customerNumber is NOT NULL group by e.lastName having Freq > 7 order by Freq desc limit 3 ;
