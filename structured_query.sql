@@ -122,3 +122,19 @@ select lastName, count(lastName) as Customers from employees as e join customers
 
 -- class ex
 select e.lastName, count(e.lastName) as Freq from employees as e inner join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` where c.customerNumber is NOT NULL group by e.lastName having Freq > 7 order by Freq desc limit 3 ;
+
+
+
+-- https://drive.google.com/file/d/1GMNCHH6OqCA3S_ChmRvvG1BzHE_mJLUC/view
+
+select CURRENT_DATE();
+
+select DATE_FORMAT(CURRENT_DATE(),'%Y');
+
+select YEAR(CURRENT_DATE()) as 'CURRENT YEAR';
+
+select DATEDIFF(CURRENT_DATE(),'2021-01-01') as DIFF;
+
+
+SELECT IF(DATEDIFF(CURRENT_DATE(),'2021-01-01')>90, 'More than 3 months', 'Less than 3 months') as '1st Quarter' ;
+
