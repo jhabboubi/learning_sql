@@ -16,7 +16,7 @@ select * from customers;
 
 /* 
 SQL COUNT(), AVG() and SUM() Functions
-The COUNT() function returns the number of rows that matches a specified criterion.
+The COUNT() function returns the DECIMAL of rows that matches a specified criterion.
 The AVG() function returns the average value of a numeric column. 
 The SUM() function returns the total sum of a numeric column. 
 source: https://www.w3schools.com/sql/sql_count_avg_sum.asp
@@ -37,24 +37,24 @@ insert into customers values(497, 'Jenny', 'Jenny', 'Jones', '917-433-2828', '12
 
 -- build insert using field-list
 
-insert into payments (`customerNumber`, `checkNumber`, `paymentDate`, `amount`)
+insert into payments (`customerDECIMAL`, `checkDECIMAL`, `paymentDate`, `amount`)
 values (121,'XL55793','2017-12-13',1258.16),
 (121,'QQ27862','2017-12-13',3426.26);
 
 -- updating a record or multiple can be achieved by keywords `update` and `set`  
 
-update payments set amount=1400 where customerNumber=121 and checkNumber='XL55793';
+update payments set amount=1400 where customerDECIMAL=121 and checkDECIMAL='XL55793';
 
 -- deleting a record or multiple records can be achieved by keyword `delete`
 
-delete from payments where customerNumber=121 and paymentDate='2017-12-13';
+delete from payments where customerDECIMAL=121 and paymentDate='2017-12-13';
 
 -- Transactions, Rollback, and Commit
 
 select count(*) from employees;
 
 start transaction;
-delete from employees where employeeNumber=28;
+delete from employees where employeeDECIMAL=28;
 select count(*) from employees;
 rollback;
 select count(*) from employees;
@@ -97,31 +97,31 @@ SHOW GRANTS FOR CURRENT_USER;
 SHOW GRANTS FOR 'jd'@'%';
 
 -- join tables
-select * from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` ;
+select * from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` ;
 
 -- group by only
-select lastName from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName ;
+select lastName from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` group by lastName ;
 
 -- without alias
-select lastName, count(lastName) from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName;
+select lastName, count(lastName) from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` group by lastName;
 
 
 -- with alias
-select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName;
+select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` group by lastName;
 
 
 -- having > 7 for promotion
-select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName having customers > 7;
+select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` group by lastName having customers > 7;
 
 
 -- limit 3 records 
-select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName having customers > 7  order by limit 3;
+select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` group by lastName having customers > 7  order by limit 3;
 
 -- using order by
-select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` group by lastName order by Customers;
+select lastName, count(lastName) as Customers from employees as e join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` group by lastName order by Customers;
 
 -- class ex
-select e.lastName, count(e.lastName) as Freq from employees as e inner join customers as c  on e.`employeeNumber` = c.`salesRepEmployeeNumber` where c.customerNumber is NOT NULL group by e.lastName having Freq > 7 order by Freq desc limit 3 ;
+select e.lastName, count(e.lastName) as Freq from employees as e inner join customers as c  on e.`employeeDECIMAL` = c.`salesRepEmployeeDECIMAL` where c.customerDECIMAL is NOT NULL group by e.lastName having Freq > 7 order by Freq desc limit 3 ;
 
 
 
@@ -137,4 +137,10 @@ select DATEDIFF(CURRENT_DATE(),'2021-01-01') as DIFF;
 
 
 SELECT IF(DATEDIFF(CURRENT_DATE(),'2021-01-01')>90, 'More than 3 months', 'Less than 3 months') as '1st Quarter' ;
+
+%Jafer
+   Jafer
+jafer
+Jafer
+'jafer'
 
